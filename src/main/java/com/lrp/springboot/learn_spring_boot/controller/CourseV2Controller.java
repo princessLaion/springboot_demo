@@ -1,9 +1,7 @@
 package com.lrp.springboot.learn_spring_boot.controller;
 
 import com.lrp.springboot.learn_spring_boot.model.Course;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
