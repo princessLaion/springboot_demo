@@ -1,7 +1,7 @@
 package com.lrp.springboot.learn_spring_boot.controller;
 
 import com.lrp.springboot.learn_spring_boot.model.Course;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -11,6 +11,8 @@ public class CourseV2Controller {
 
 
     /**
+     * method is to limit the HTTP method to GET only.
+     *
      * Output:
      * [
      * {
@@ -26,7 +28,9 @@ public class CourseV2Controller {
      * ]
      * @return
      */
-    @RequestMapping("/coursesv2")
+
+    //Another Option: @RequestMapping(method = RequestMethod.GET, path = "/coursesv2")
+    @GetMapping(path = "/coursesv2")
     public List<Course> retrieveCourses() {
         return List.of(
                 new Course(1, "dddd Learn AWS", "Learn Cloud Practitioner"),

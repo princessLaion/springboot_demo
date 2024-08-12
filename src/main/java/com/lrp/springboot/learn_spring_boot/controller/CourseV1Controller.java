@@ -3,6 +3,7 @@ package com.lrp.springboot.learn_spring_boot.controller;
 import com.lrp.springboot.learn_spring_boot.model.Course;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
@@ -28,7 +29,7 @@ public class CourseV1Controller {
      * @return
      */
     @ResponseBody
-    @RequestMapping("/coursesv1")
+    @RequestMapping(method = RequestMethod.GET, path = "/coursesv1")
     public List<Course> retrieveCourses() {
         return List.of(
                 new Course(1, "Learn AWS", "Learn Cloud Practitioner"),
