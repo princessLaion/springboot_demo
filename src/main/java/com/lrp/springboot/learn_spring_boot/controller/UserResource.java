@@ -51,4 +51,21 @@ public class UserResource {
 
 
     }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
+    }
+
+
+    /**
+     * Delete user, but returns the deleted user info.
+     */
+    @DeleteMapping("/users/info/{id}")
+    public ResponseEntity<User> deleteUserWithInfo(@PathVariable Integer id) {
+        User user = userService.deleteUserWithInfo(id);
+        return ResponseEntity
+                .accepted()
+                .body(user);
+    }
 }

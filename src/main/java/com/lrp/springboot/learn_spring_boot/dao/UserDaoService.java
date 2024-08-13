@@ -20,18 +20,36 @@ public class UserDaoService {
         users.add(new User(3, "James Marsden", LocalDate.now().minusYears(5)));
     }
 
+    private Predicate<? super User> isUserMatch(Integer userId) {
+        return user -> user.getId().equals(userId);
+    }
+
     public List<User> retrieveAllUser() {
         return users;
     }
 
     public User retrieveUser(Integer id) {
-        Predicate<? super User> userMatch = user -> user.getId() == id;
         return users.stream()
-                .filter(userMatch)
+                .filter(isUserMatch(id))
                 .findFirst()
                 .orElseThrow(
                         () -> new UserNotFoundException("id: " + id)
                 );
+    }
+
+
+    public void deleteUser(Integer id) {
+        users.removeIf(isUserMatch(id));
+    }
+
+    /**
+     * Another option of returning the deleted User info.
+     */
+    public User deleteUserWithInfo(Integer id) {
+        User user = retrieveUser(id);
+        users.removeIf(isUserMatch(id));
+
+        return user;
     }
 
     public User addUser(User user) {
@@ -39,4 +57,5 @@ public class UserDaoService {
         users.add(user);
         return user;
     }
+
 }
