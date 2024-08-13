@@ -35,5 +35,8 @@ Status: 404
      "description": "uri=/users"
 }
 
+## API documentation
+http://localhost:8080/swagger-ui/index.html
+
 Reference:
 https://github.com/in28minutes/spring-microservices-v2/blob/main/02.restful-web-services/01-step-by-step-changes/v2.md#step-12
