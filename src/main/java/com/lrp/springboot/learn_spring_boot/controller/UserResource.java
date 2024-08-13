@@ -2,6 +2,7 @@ package com.lrp.springboot.learn_spring_boot.controller;
 
 import com.lrp.springboot.learn_spring_boot.dao.UserDaoService;
 import com.lrp.springboot.learn_spring_boot.model.User;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -29,7 +30,7 @@ public class UserResource {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> addUser(@RequestBody User user) {
+    public ResponseEntity<User> addUser(@Valid @RequestBody User user) {
         User newUser = userService.addUser(user);
 
         //Will create URI:  http://localhost:8080/users/{id}

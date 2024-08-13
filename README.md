@@ -27,3 +27,13 @@ Status: 404
 "message": "id: 23",
 "description": "uri=/users/23"
 }
+
+## Validation Error Message Response Sample
+{
+     "localDateTime": "2024-08-14T01:11:31.5306997",
+     "message": "Name is required., Birth date is required.",
+     "description": "uri=/users"
+}
+
+Reference:
+https://github.com/in28minutes/spring-microservices-v2/blob/main/02.restful-web-services/01-step-by-step-changes/v2.md#step-12
