@@ -18,3 +18,12 @@ For intellij,
 ## To access
 http://localhost:8080/coursesv1 - The standard Controller. Need to specify ResponseBody annotation
 http://localhost:8080/coursesv2 - Using RestController. Includes the Controller and ResponseBody annotation.
+
+
+## Generic Exception Handling generated response based from ErrorDetail
+Status: 404
+{
+"localDateTime": "2024-08-13T23:04:54.3524296",
+"message": "id: 23",
+"description": "uri=/users/23"
+}
