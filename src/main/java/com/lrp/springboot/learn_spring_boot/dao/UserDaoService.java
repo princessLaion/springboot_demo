@@ -1,5 +1,6 @@
 package com.lrp.springboot.learn_spring_boot.dao;
 
+import com.lrp.springboot.learn_spring_boot.exception.UserNotFoundException;
 import com.lrp.springboot.learn_spring_boot.model.User;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +28,10 @@ public class UserDaoService {
         Predicate<? super User> userMatch = user -> user.getId() == id;
         return users.stream()
                 .filter(userMatch)
-                .findFirst().get();
+                .findFirst()
+                .orElseThrow(
+                        () -> new UserNotFoundException("id: " + id)
+                );
     }
 
     public User addUser(User user) {
