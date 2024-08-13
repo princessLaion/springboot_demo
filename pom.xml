@@ -40,6 +40,12 @@
 			<artifactId>spring-boot-starter-validation</artifactId>
 		</dependency>
 
+		<!-- Data Format -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+
 		<!-- Helps monitor and manage your application -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
