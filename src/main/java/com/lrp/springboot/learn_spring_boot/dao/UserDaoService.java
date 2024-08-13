@@ -30,8 +30,9 @@ public class UserDaoService {
                 .findFirst().get();
     }
 
-    public void addUser(User user) {
+    public User addUser(User user) {
         user.setId(users.size() + 1);
         users.add(user);
+        return user;
     }
 }
