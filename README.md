@@ -44,5 +44,23 @@ http://localhost:8080/swagger-ui/index.html
     <artifactId>jackson-dataformat-xml</artifactId>
 </dependency>
 
+## Versioning
+Can be URL, Request Parameter, Header or Media Type
+
+Sample:
+V1:
+{
+    "name": "John Smith"
+}
+
+V2:
+{
+    "name": {
+        "firstName": "John",
+        "lastName": "Smith"
+    }
+}
+
+
 Reference:
 https://github.com/in28minutes/spring-microservices-v2/blob/main/02.restful-web-services/01-step-by-step-changes/v2.md#step-12
