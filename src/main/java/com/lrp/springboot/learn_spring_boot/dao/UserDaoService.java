@@ -15,9 +15,9 @@ public class UserDaoService {
     private static List<User> users = new ArrayList<>();
 
     static {
-        users.add(new User(1, "Piolo Milby", LocalDate.now().minusYears(10)));
-        users.add(new User(2, "Sam Pascual", LocalDate.now().minusYears(3)));
-        users.add(new User(3, "James Marsden", LocalDate.now().minusYears(5)));
+        users.add(new User(1, "Piolo Milby", LocalDate.now().minusYears(10), "confidential 1"));
+        users.add(new User(2, "Sam Pascual", LocalDate.now().minusYears(3), "confidential 2"));
+        users.add(new User(3, "James Marsden", LocalDate.now().minusYears(5), "confidential 3"));
     }
 
     private Predicate<? super User> isUserMatch(Integer userId) {
