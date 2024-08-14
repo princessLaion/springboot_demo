@@ -3,6 +3,8 @@ package com.lrp.springboot.learn_spring_boot.controller;
 import com.lrp.springboot.learn_spring_boot.dao.UserDaoService;
 import com.lrp.springboot.learn_spring_boot.model.User;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -27,6 +29,19 @@ public class UserResource {
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable Integer id) {
         return userService.retrieveUser(id);
+    }
+
+    @GetMapping("/users/hateoas/{id}")
+    public EntityModel<User> retrieveUserWithHateoas(@PathVariable Integer id) {
+        User user = userService.retrieveUser(id);
+        EntityModel<User> entityModel = EntityModel.of(user);
+
+        //To not hardcode the link. Get the link based on specific method
+        WebMvcLinkBuilder link = WebMvcLinkBuilder
+                .linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
+        entityModel.add(link.withRel("all-users"));
+
+        return entityModel;
     }
 
     @PostMapping("/users")
