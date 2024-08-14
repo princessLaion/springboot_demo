@@ -1,18 +1,19 @@
 package com.lrp.springboot.learn_spring_boot.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity(name = "user_details")
 public class User {
     @Id
@@ -21,7 +22,7 @@ public class User {
 
     @Size(min=2, message = "Name is Minimum of 2 characters required")
     @NotNull(message = "Name is required.")
-    @JsonProperty("user_name")
+    //@JsonProperty("user_name")
     private String name;
 
     @Past(message = "Birth date should be in the past")
