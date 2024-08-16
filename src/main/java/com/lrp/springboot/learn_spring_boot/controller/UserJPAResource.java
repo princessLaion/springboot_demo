@@ -1,5 +1,7 @@
 package com.lrp.springboot.learn_spring_boot.controller;
 
+import com.lrp.springboot.learn_spring_boot.exception.UserNotFoundException;
+import com.lrp.springboot.learn_spring_boot.model.Post;
 import com.lrp.springboot.learn_spring_boot.model.User;
 import com.lrp.springboot.learn_spring_boot.repository.jpa.UserRepository;
 import jakarta.validation.Valid;
@@ -93,5 +95,19 @@ public class UserJPAResource {
         return ResponseEntity
                 .accepted()
                 .body(user.get());
+    }
+
+    @GetMapping ("/jpa/users/{id}/posts")
+    public List<Post> retrievePostByUser(@PathVariable int id) {
+
+        List<Post> posts = userRepository.findById(id)
+                .map(User::getPost)
+                .get();
+
+        if (posts.isEmpty()) {
+            throw new UserNotFoundException("Empty Post for user: " + id);
+        }
+
+        return posts;
     }
 }

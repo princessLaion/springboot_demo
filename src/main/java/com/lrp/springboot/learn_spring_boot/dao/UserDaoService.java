@@ -1,6 +1,7 @@
 package com.lrp.springboot.learn_spring_boot.dao;
 
 import com.lrp.springboot.learn_spring_boot.exception.UserNotFoundException;
+import com.lrp.springboot.learn_spring_boot.model.Post;
 import com.lrp.springboot.learn_spring_boot.model.User;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +16,15 @@ public class UserDaoService {
     private static List<User> users = new ArrayList<>();
 
     static {
-        users.add(new User(1, "Piolo Milby", LocalDate.now().minusYears(10), "confidential 1"));
-        users.add(new User(2, "Sam Pascual", LocalDate.now().minusYears(3), "confidential 2"));
-        users.add(new User(3, "James Marsden", LocalDate.now().minusYears(5), "confidential 3"));
+        users.add(new User(1, "Piolo Milby",
+                LocalDate.now().minusYears(10),
+                "confidential 1", null));
+        users.add(new User(2, "Sam Pascual",
+                LocalDate.now().minusYears(3),
+                "confidential 2", null));
+        users.add(new User(3, "James Marsden",
+                LocalDate.now().minusYears(5),
+                "confidential 3", new ArrayList<Post>()));
     }
 
     private Predicate<? super User> isUserMatch(Integer userId) {

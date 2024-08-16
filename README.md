@@ -100,5 +100,9 @@ Output:
 ## HAL Explorer
 http://localhost:8080/explorer/index.html
 
+## In Memory DB
+http://localhost:8080/h2-console
+
+
 Reference:
 https://github.com/in28minutes/spring-microservices-v2/blob/main/02.restful-web-services/01-step-by-step-changes/v2.md#step-12

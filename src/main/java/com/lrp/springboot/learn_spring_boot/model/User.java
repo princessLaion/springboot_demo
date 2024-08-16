@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,4 +34,8 @@ public class User {
     @JsonIgnore
     //Can also specify the fields on class label using JsonIgnoreProperties at class level and specifying the field names.
     private String confidentialData;
+
+    @JsonIgnore //We don't want it as part of response
+    @OneToMany(mappedBy = "user")
+    private List<Post> post;
 }
