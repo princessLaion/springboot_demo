@@ -3,6 +3,7 @@ package com.lrp.springboot.learn_spring_boot.controller;
 import com.lrp.springboot.learn_spring_boot.exception.UserNotFoundException;
 import com.lrp.springboot.learn_spring_boot.model.Post;
 import com.lrp.springboot.learn_spring_boot.model.User;
+import com.lrp.springboot.learn_spring_boot.repository.jpa.PostRepository;
 import com.lrp.springboot.learn_spring_boot.repository.jpa.UserRepository;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ import java.util.Optional;
 public class UserJPAResource {
 
     private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
     @GetMapping("/jpa/users")
     public List<User> retrieveAllUsers() {
@@ -97,7 +99,7 @@ public class UserJPAResource {
                 .body(user.get());
     }
 
-    @GetMapping ("/jpa/users/{id}/posts")
+    @GetMapping ("/jpa/user/{id}/posts")
     public List<Post> retrievePostByUser(@PathVariable int id) {
 
         List<Post> posts = userRepository.findById(id)
@@ -109,5 +111,25 @@ public class UserJPAResource {
         }
 
         return posts;
+    }
+
+    @PostMapping ("/jpa/user/{userId}/posts")
+    public ResponseEntity<Post> postMessage (@PathVariable int userId, @Valid @RequestBody Post post) {
+        Optional<User> user = userRepository.findById(userId);
+        post.setUser(user.get());
+
+        Post newPostByUser = postRepository.save(post);
+
+        //Will create URI:  http://localhost:8080/jpa/user/{userId}/posts
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .buildAndExpand(user.get().getId())
+                .toUri();
+
+        //will return 201 (created) with the User Response.
+        return ResponseEntity
+                .created(location) //means 201 status
+                .body(newPostByUser);
+
     }
 }
