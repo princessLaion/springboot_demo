@@ -120,10 +120,11 @@ public class UserJPAResource {
 
         Post newPostByUser = postRepository.save(post);
 
-        //Will create URI:  http://localhost:8080/jpa/user/{userId}/posts
+        //Will create URI:  http://localhost:8080/jpa/user/{userId}/posts/{postsId}
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
-                .buildAndExpand(user.get().getId())
+                .path("/{postId}")
+                .buildAndExpand(newPostByUser.getId())
                 .toUri();
 
         //will return 201 (created) with the User Response.
