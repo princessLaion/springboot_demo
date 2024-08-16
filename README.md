@@ -103,6 +103,15 @@ http://localhost:8080/explorer/index.html
 ## In Memory DB
 http://localhost:8080/h2-console
 
+## Docker
+docker run \
+--detach \
+--env MYSQL_ROOT_PASSWORD=dummypassword \
+--env MYSQL_USER=social-media-user \
+--env MYSQL_PASSWORD=dummypassword \
+--env MYSQL_DATABASE=social-media-database \
+--name mysql \
+--publish 3306:3306 mysql:8-oracle
 
 Reference:
 https://github.com/in28minutes/spring-microservices-v2/blob/main/02.restful-web-services/01-step-by-step-changes/v2.md#step-12
