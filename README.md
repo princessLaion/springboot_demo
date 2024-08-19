@@ -115,5 +115,14 @@ docker run \
 --name mysql \
 --publish 3306:3306 mysql:8-oracle
 
+## Spring Security.
+Encode username and password:
+https://www.base64encode.org/
+username:password, then click encode
+
+For Header
+Authorization, Basic <base64EncodedUsernamePassword>
+
+
 Reference:
 https://github.com/in28minutes/spring-microservices-v2/blob/main/02.restful-web-services/01-step-by-step-changes/v2.md#step-12
