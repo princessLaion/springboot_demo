@@ -104,6 +104,8 @@ http://localhost:8080/explorer/index.html
 http://localhost:8080/h2-console
 
 ## Docker
+Open Docker Desktop and Start MySQL Container
+
 docker run \
 --detach \
 --env MYSQL_ROOT_PASSWORD=dummypassword \
